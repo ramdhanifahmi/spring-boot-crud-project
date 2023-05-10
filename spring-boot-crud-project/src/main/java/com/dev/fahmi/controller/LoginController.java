@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +30,6 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
-            // load the user details from the database
             Optional<User> user = userDetailsService.findByUsername(loginRequest.getUsername());
 
             if(user.isEmpty()){
@@ -40,7 +37,6 @@ public class LoginController {
             }
 
             User userDetails = user.get();
-            // check if the username and password are valid
             if (!userDetails.getPassword().equals(loginRequest.getPassword())) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
@@ -49,7 +45,6 @@ public class LoginController {
             return ResponseEntity.ok(token);
 
         } catch (UsernameNotFoundException ex) {
-            // return a failure response if the username is not found
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
