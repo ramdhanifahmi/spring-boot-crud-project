@@ -1,2 +1,2 @@
 # spring-boot-crud-project
-This is a sample project that demonstrates how to create a CRUD (Create, Read, Update, Delete) application using Spring Boot, Spring Data JPA, and postgreSQL database. It also shows how to enable JPA auditing to track and log the changes made to the persistent entities.
+This is a sample project that demonstrates how to create a CRUD (Create, Read, Update, Delete) application using Spring Boot, Spring Data JPA, and postgreSQL database. It also shows how to enable JPA auditing to track and log the changes made to the persistent entities. The postman collection for all of rest API can see in this public postman: https://elements.getpostman.com/redirect?entityId=21051366-12bece6f-2b4e-4da7-bc4b-9978143fd582&entityType=collection
